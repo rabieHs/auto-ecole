@@ -1,3 +1,6 @@
+import 'package:auto_ecole/core/constants.dart';
+import 'package:auto_ecole/views/register.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -15,249 +18,151 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: !Responsive.isMobile(context)
-          ? Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/background.jpg"),
-                            fit: BoxFit.cover,
-                            scale: 0.1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(30),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Titre 1 ",
-                            style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Slogan ",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                          //ajouter ici les autres textes (exp : addresse, contacte etc)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Join Us",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "User Name",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Email",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Password",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Phone Number",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: MaterialButton(
-                            onPressed: () {},
-                            child: Container(
-                                height: 45,
-                                width: 200,
-                                child: Center(
-                                    child: Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ))),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            color: Colors.blue,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
-          : SingleChildScrollView(
+        body: Row(
+      children: [
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(),
+            child: Padding(
+              padding: const EdgeInsets.all(30),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height / 2,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/background.jpg"),
-                          fit: BoxFit.cover,
-                          scale: 0.1),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Titre 1 ",
-                          style: TextStyle(
-                              fontSize: 30,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Slogan ",
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                        //ajouter ici les autres textes (exp : addresse, contacte etc)
-                      ],
+                    width: 340,
+                    child: Text(
+                      "Empowering Safe Drivers, One Lesson at a Time.",
+                      style: TextStyle(
+                          fontSize: 40,
+                          color: primaryColor,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Join Us",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "User Name",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Email",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Password",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: "Phone Number",
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.blue),
-                                borderRadius: BorderRadius.circular(10)),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: MaterialButton(
-                            onPressed: () {},
-                            child: Container(
-                                height: 45,
-                                width: 200,
-                                child: Center(
-                                    child: Text(
-                                  "Login",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ))),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            color: Colors.blue,
-                          ),
-                        )
-                      ],
-                    ),
+                  Text(
+                    "L’auto-école  « MOHAMED SALEHEL HEDOUI » a été crée en octobre 2009 ,elle se suite àRue« FARHAT HACHED » PLACE GABES .CETTE école permet d’assurerles cours  de code de la route et lescours des conduit. ",
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600),
                   ),
+                  Image.asset(
+                    "assets/images/image1.png",
+                    width: 450,
+                    height: 450,
+                  )
                 ],
               ),
             ),
-    );
+          ),
+        ),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+            color: primaryColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 250,
+                  child: RichText(
+                    text: TextSpan(
+                        text: "Login To Your",
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                        children: [
+                          TextSpan(
+                            text: "Account",
+                            style: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                color: secondaryColor),
+                          )
+                        ]),
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                    fillColor: secondaryColor,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    fillColor: secondaryColor,
+                    filled: true,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: MaterialButton(
+                    onPressed: () {},
+                    child: Container(
+                        height: 45,
+                        width: 200,
+                        child: Center(
+                            child: Text(
+                          "Login",
+                          style: TextStyle(
+                              color: primaryColor, fontWeight: FontWeight.bold),
+                        ))),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                        text: "You Don't have An Acccount? ",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        children: [
+                          TextSpan(
+                            text: "Register",
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => RegisterScreen())),
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )
+                        ]),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 }
