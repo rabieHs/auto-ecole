@@ -1,14 +1,21 @@
-import 'package:auto_ecole/views/question.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import 'package:auto_ecole/views/condidat/question.dart';
+
 class QuizScreen extends StatefulWidget {
+  List<Question> questionList;
+  QuizScreen({
+    Key? key,
+    required this.questionList,
+  }) : super(key: key);
+
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
   //define the datas
-  List<Question> questionList = getQuestions();
   int currentQuestionIndex = 0;
   int score = 0;
   Answer? selectedAnswer;
@@ -42,7 +49,7 @@ class _QuizScreenState extends State<QuizScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Question ${currentQuestionIndex + 1}/${questionList.length.toString()}",
+          "Question ${currentQuestionIndex + 1}/${widget.questionList.length.toString()}",
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -59,7 +66,7 @@ class _QuizScreenState extends State<QuizScreen> {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Text(
-            questionList[currentQuestionIndex].questionText,
+            widget.questionList[currentQuestionIndex].questionText,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 18,
@@ -73,8 +80,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   _answerList() {
     return Column(
-      children: questionList[currentQuestionIndex]
-          .answersList
+      children: widget.questionList[currentQuestionIndex].answersList
           .map(
             (e) => _answerButton(e),
           )
@@ -116,7 +122,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   _nextButton() {
     bool isLastQuestion = false;
-    if (currentQuestionIndex == questionList.length - 1) {
+    if (currentQuestionIndex == widget.questionList.length - 1) {
       isLastQuestion = true;
     }
 
@@ -150,7 +156,7 @@ class _QuizScreenState extends State<QuizScreen> {
   _showScoreDialog() {
     bool isPassed = false;
 
-    if (score >= questionList.length * 0.6) {
+    if (score >= widget.questionList.length * 0.6) {
       //pass if 60 %
       isPassed = true;
     }

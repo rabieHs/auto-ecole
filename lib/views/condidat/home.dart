@@ -1,11 +1,11 @@
-import 'package:auto_ecole/views/acceuil.dart';
-import 'package:auto_ecole/views/cours.dart';
-import 'package:auto_ecole/views/profile.dart';
+import 'package:auto_ecole/views/condidat/acceuil.dart';
+import 'package:auto_ecole/views/condidat/cours.dart';
+import 'package:auto_ecole/views/condidat/profile.dart';
+import 'package:auto_ecole/views/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'test.dart';
 import 'paiement.dart';
 
 class Home extends StatefulWidget {
@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List interfaces = [
+  List interfaces = const [
     acceuil(),
     cours(),
     test(),

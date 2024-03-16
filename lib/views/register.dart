@@ -1,4 +1,3 @@
-import 'package:auto_ecole/views/home.dart';
 import 'package:auto_ecole/views/welcome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +6,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:auto_ecole/core/constants.dart';
+
+import 'condidat/home.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

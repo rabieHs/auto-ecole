@@ -1,11 +1,17 @@
-import 'package:auto_ecole/core/constants.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import 'package:auto_ecole/core/constants.dart';
+
 class CourDetails extends StatefulWidget {
-  const CourDetails({Key? key}) : super(key: key);
+  final Map<String, dynamic> map;
+  const CourDetails({
+    Key? key,
+    required this.map,
+  }) : super(key: key);
 
   @override
   State<CourDetails> createState() => _CourDetailsState();
@@ -14,13 +20,6 @@ class CourDetails extends StatefulWidget {
 class _CourDetailsState extends State<CourDetails> {
   final CarouselController controller = CarouselController();
 
-  List<String> texts = [
-    "text 1",
-    "Text 2",
-    "Text 3",
-    "Text 4",
-    "Text 5",
-  ];
   int index = 0;
   @override
   Widget build(BuildContext context) {
@@ -36,10 +35,10 @@ class _CourDetailsState extends State<CourDetails> {
             child: Center(
               child: CarouselSlider.builder(
                 carouselController: controller,
-                itemCount: texts.length,
+                itemCount: widget.map["course_content"].length,
                 itemBuilder: (context, index, _index) {
-                  return Image.asset(
-                    "assets/images/image1.png",
+                  return Image.network(
+                    widget.map["course_content"][index]["image"],
                   );
                 },
                 options: CarouselOptions(),
@@ -59,7 +58,9 @@ class _CourDetailsState extends State<CourDetails> {
                     onTap: () {
                       controller.previousPage();
                       setState(() {
-                        index > 0 ? index-- : index = texts.length - 1;
+                        index > 0
+                            ? index--
+                            : index = widget.map["course_content"].length - 1;
                       });
                     },
                     child: Icon(
@@ -68,12 +69,14 @@ class _CourDetailsState extends State<CourDetails> {
                       color: Colors.white,
                     ),
                   ),
-                  Text(texts[index]),
+                  Text(widget.map["course_content"][index]["text"]),
                   InkWell(
                     onTap: () {
                       controller.nextPage();
                       setState(() {
-                        index == texts.length - 1 ? index = 0 : index++;
+                        index == widget.map["course_content"].length - 1
+                            ? index = 0
+                            : index++;
                       });
                     },
                     child: Icon(

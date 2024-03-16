@@ -1,8 +1,9 @@
+import 'package:auto_ecole/core/constants.dart';
 import 'package:auto_ecole/firebase_options.dart';
-import 'package:auto_ecole/views/acceuil.dart';
-import 'package:auto_ecole/views/cours.dart';
-import 'package:auto_ecole/views/home.dart';
+import 'package:auto_ecole/views/condidat/home.dart';
+
 import 'package:auto_ecole/views/register.dart';
+import 'package:auto_ecole/views/secretaire/home.dart';
 import 'package:auto_ecole/views/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,7 +25,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: //condition     ?   // si oui(action)   :  // si non (action)
-          FirebaseAuth.instance.currentUser != null ? Home() : RegisterScreen(),
+          FirebaseAuth.instance.currentUser != null
+              ? FirebaseAuth.instance.currentUser!.uid == AdminId
+                  ? HomeSec()
+                  : Home()
+              : RegisterScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

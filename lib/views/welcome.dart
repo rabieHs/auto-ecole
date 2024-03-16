@@ -1,5 +1,4 @@
 import 'package:auto_ecole/core/constants.dart';
-import 'package:auto_ecole/views/home.dart';
 import 'package:auto_ecole/views/register.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../controllers/responseive.dart';
+import 'condidat/home.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});

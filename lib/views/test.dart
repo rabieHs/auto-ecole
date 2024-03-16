@@ -1,5 +1,6 @@
 import 'package:auto_ecole/core/constants.dart';
-import 'package:auto_ecole/views/quiz.dart';
+import 'package:auto_ecole/views/condidat/question.dart';
+import 'package:auto_ecole/views/condidat/quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/animation/animation_controller.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -37,14 +38,16 @@ class _testState extends State<test> with SingleTickerProviderStateMixin {
             SizedBox(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: questions.length,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => QuizScreen()));
+                          builder: (context) => QuizScreen(
+                                questionList: questions[index],
+                              )));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -64,11 +67,10 @@ class _testState extends State<test> with SingleTickerProviderStateMixin {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                                    image: NetworkImage(testImages[index]),
                                     fit: BoxFit.cover)),
                           ),
-                          Center(child: Text("اختبار رقم 1"))
+                          Center(child: Text("اختبار رقم ${index + 1}"))
                         ],
                       ),
                     ),
