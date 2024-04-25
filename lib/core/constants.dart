@@ -6,6 +6,7 @@ const String testImage =
     "https://lh3.googleusercontent.com/proxy/eKFhrQ6C48nPdiBsqyI2kbWAJ18DQuVS9XDK87pMlZLmviSAKLquC5qBxbxHcmOxoE71RcZJ2Rf65ZcVemJ0ulEEx7MHOAyZ2mDcUHfeMyjlMG-QVZ0X8D2o4UjH2eJIfljkiE1Grx_9V1Q";
 
 const AdminId = "8e7D6JsHYxTeWy6bVeO7uBLowhf2";
+const MoniteurId = "EgIe8lEGcIVm5C2WpomBUO2cb5n2";
 
 /// map =  { key : value } ==>  map["key"] <== value
 ///

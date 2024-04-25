@@ -1,4 +1,5 @@
 import 'package:auto_ecole/core/constants.dart';
+import 'package:auto_ecole/views/moniteur/moniteur_page.dart';
 import 'package:auto_ecole/views/register.dart';
 import 'package:auto_ecole/views/secretaire/condidats.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -144,7 +145,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                   builder: (context) =>
                                       resultat.user!.uid == AdminId
                                           ? condidats()
-                                          : Home()));
+                                          : resultat.user!.uid == MoniteurId
+                                              ? MoniteurPage()
+                                              : Home()));
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text("Error login"),

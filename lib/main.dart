@@ -2,6 +2,7 @@ import 'package:auto_ecole/core/constants.dart';
 import 'package:auto_ecole/firebase_options.dart';
 import 'package:auto_ecole/views/condidat/acceuil.dart';
 import 'package:auto_ecole/views/condidat/home.dart';
+import 'package:auto_ecole/views/moniteur/moniteur_page.dart';
 
 import 'package:auto_ecole/views/register.dart';
 import 'package:auto_ecole/views/secretaire/condidats.dart';
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print(FirebaseAuth.instance.currentUser!.uid);
+
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.green),
       title: 'Flutter Demo',
@@ -30,7 +33,9 @@ class MyApp extends StatelessWidget {
           FirebaseAuth.instance.currentUser != null
               ? FirebaseAuth.instance.currentUser!.uid == AdminId
                   ? condidats()
-                  : Home()
+                  : FirebaseAuth.instance.currentUser!.uid == MoniteurId
+                      ? MoniteurPage()
+                      : Home()
               : Acceuil(),
       debugShowCheckedModeBanner: false,
     );

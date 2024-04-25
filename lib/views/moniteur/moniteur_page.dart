@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:auto_ecole/main.dart';
+import 'package:auto_ecole/views/moniteur/moniteur_reservations_page.dart';
 import 'package:auto_ecole/views/secretaire/reservations_condidat.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,14 +12,14 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:auto_ecole/core/constants.dart';
 
-class condidats extends StatefulWidget {
-  const condidats({super.key});
+class MoniteurPage extends StatefulWidget {
+  const MoniteurPage({super.key});
 
   @override
-  State<condidats> createState() => _condidatsState();
+  State<MoniteurPage> createState() => _condidatsState();
 }
 
-class _condidatsState extends State<condidats>
+class _condidatsState extends State<MoniteurPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -37,10 +38,9 @@ class _condidatsState extends State<condidats>
   @override
   Widget build(BuildContext context) {
     print(FirebaseAuth.instance.currentUser!.uid);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Condidats"),
+        title: Text("Moniteur Page"),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection("users").snapshots(),
@@ -85,7 +85,7 @@ class _condidatsState extends State<condidats>
                           // enabled: false,
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ReservationCondidat(
+                                builder: (context) => MoniteurReservations(
                                     user: usersList[index])));
                           },
 
