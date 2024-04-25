@@ -1,46 +1,19 @@
-import 'dart:io';
-
-import 'package:auto_ecole/main.dart';
-import 'package:auto_ecole/views/secretaire/reservations_condidat.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:auto_ecole/core/constants.dart';
 
-class condidats extends StatefulWidget {
-  const condidats({super.key});
-
-  @override
-  State<condidats> createState() => _condidatsState();
-}
-
-class _condidatsState extends State<condidats>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class MesReservations extends StatelessWidget {
+  const MesReservations({super.key});
 
   @override
   Widget build(BuildContext context) {
+    print(FirebaseAuth.instance.currentUser!.uid);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Condidats"),
-      ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("users").snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection("reservation")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .snapshots(),
         builder: (context, resultat) {
           if (resultat.hasError) {
             return Center(
@@ -52,26 +25,35 @@ class _condidatsState extends State<condidats>
               child: CircularProgressIndicator(),
             );
           } else {
-            if (resultat.data!.docs.isEmpty) {
+            if (!resultat.hasData) {
               return Center(
                 child: CircularProgressIndicator(),
               );
             } else {
-              List<Map> usersList =
-                  resultat.data!.docs.map((doc) => doc.data()).toList();
+              if (!resultat.data!.exists) {
+                return Container();
+              }
+
+              Map<String, dynamic> data =
+                  resultat.data!.data() as Map<String, dynamic>;
+              List reservationList = data["reservations"];
+
               return ListView.builder(
-                  itemCount: usersList.length,
+                  itemCount: reservationList.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: Colors.indigo,
+                          color: reservationList[index]["type"] == "cour"
+                              ? Colors.green
+                              : Colors.orange,
                         ),
                         child: ListTile(
-                          title: Text(usersList[index]["nom"]),
-                          subtitle: Text('payer ou non , date'),
+                          title: Text(reservationList[index]["type"]),
+                          subtitle: Text(
+                              "${reservationList[index]["date"]} -- ${reservationList[index]["time"]} "),
                           trailing: Icon(Icons.arrow_forward_ios),
                           leading: Icon(
                             Icons.account_circle_rounded,
@@ -80,15 +62,11 @@ class _condidatsState extends State<condidats>
                           //contentPadding: EdgeInsets.all(20),
                           // dense: true,
                           // enabled: false,
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ReservationCondidat(
-                                    user: usersList[index])));
-                          },
+                          onTap: () {},
 
                           iconColor: Colors.white,
                           textColor: Colors.white,
-                          tileColor: Colors.indigo,
+
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
                         ),
@@ -99,14 +77,6 @@ class _condidatsState extends State<condidats>
           }
         },
       ),
-
-      /*ListView(
-            children: [
-             
-              
-            ],
-          ),
-        )*/
     );
   }
 }

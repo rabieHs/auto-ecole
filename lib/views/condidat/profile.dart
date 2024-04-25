@@ -1,3 +1,6 @@
+import 'package:auto_ecole/views/condidat/acceuil.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/animation/animation_controller.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -14,8 +17,22 @@ class profile extends StatefulWidget {
 class _profileState extends State<profile> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
+  getUser() async {
+    final resultat = await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    if (resultat.data() != null) {
+      setState(() {
+        user = resultat.data()!;
+      });
+    }
+  }
+
   @override
   void initState() {
+    getUser();
     super.initState();
     _controller = AnimationController(vsync: this);
   }
@@ -25,6 +42,8 @@ class _profileState extends State<profile> with SingleTickerProviderStateMixin {
     super.dispose();
     _controller.dispose();
   }
+
+  Map<String, dynamic>? user;
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +64,21 @@ class _profileState extends State<profile> with SingleTickerProviderStateMixin {
                 )
               ]),
             ),
-            buildTextField("full name", "hhh", false),
-            buildTextField("Email", "hhhhh@gmail.com", false),
-            buildTextField("password", "********", true),
-            buildTextField("address", "address", false),
+            buildTextField(
+                "full name", user != null ? user!["nom"] : "", false),
+            buildTextField("Email", user != null ? user!["email"] : "", false),
+            buildTextField(
+                "address", user != null ? user!["adresse"] : "", false),
             SizedBox(height: 30),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await FirebaseAuth.instance.signOut().whenComplete(() =>
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => Acceuil())));
+                  },
                   child: Text(
                     "Déconnexion",
                     style: TextStyle(

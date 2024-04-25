@@ -1,3 +1,4 @@
+import 'package:auto_ecole/views/welcome.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/animation/animation_controller.dart';
@@ -6,14 +7,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/ticker_provider.dart';
 import 'package:flutter/widgets.dart';
 
-class acceuil extends StatefulWidget {
-  const acceuil({Key? key}) : super(key: key);
+import '../../core/constants.dart';
+
+class Acceuil extends StatefulWidget {
+  const Acceuil({Key? key}) : super(key: key);
 
   @override
-  State<acceuil> createState() => _acceuilState();
+  State<Acceuil> createState() => _acceuilState();
 }
 
-class _acceuilState extends State<acceuil> with SingleTickerProviderStateMixin {
+class _acceuilState extends State<Acceuil> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -36,7 +39,7 @@ class _acceuilState extends State<acceuil> with SingleTickerProviderStateMixin {
         body: Center(
             child: Container(
       //width: 500,
-      height: 300,
+      height: 350,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
@@ -104,6 +107,29 @@ class _acceuilState extends State<acceuil> with SingleTickerProviderStateMixin {
                     fontWeight:
                         FontWeight.w600), // Couleur pour la troisième phrase
               ),
+              SizedBox(
+                height: 30,
+              ),
+              Center(
+                child: MaterialButton(
+                  onPressed: () async {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => WelcomeScreen()));
+                  },
+                  child: Container(
+                      height: 45,
+                      width: 200,
+                      child: Center(
+                          child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ))),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  color: primaryColor,
+                ),
+              )
             ],
           )
         ],

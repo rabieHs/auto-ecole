@@ -1,6 +1,6 @@
 import 'package:auto_ecole/core/constants.dart';
 import 'package:auto_ecole/views/register.dart';
-import 'package:auto_ecole/views/secretaire/home.dart';
+import 'package:auto_ecole/views/secretaire/condidats.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -108,6 +108,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   height: 20,
                 ),
                 TextField(
+                  obscureText: true,
                   controller: passwordController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
@@ -142,7 +143,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               MaterialPageRoute(
                                   builder: (context) =>
                                       resultat.user!.uid == AdminId
-                                          ? HomeSec()
+                                          ? condidats()
                                           : Home()));
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

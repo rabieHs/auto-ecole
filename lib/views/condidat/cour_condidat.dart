@@ -19,14 +19,14 @@ class _CoursCondidatState extends State<CoursCondidat> {
         shrinkWrap: true,
         itemCount: courses.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+            crossAxisCount: 3,
             childAspectRatio: 1,
             crossAxisSpacing: 20,
             mainAxisSpacing: 20),
         itemBuilder: (context, index) {
           //// [5 maps]
           return Padding(
-            padding: const EdgeInsets.all(90),
+            padding: const EdgeInsets.all(20),
             child: GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(

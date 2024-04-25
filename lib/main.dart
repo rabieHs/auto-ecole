@@ -1,9 +1,10 @@
 import 'package:auto_ecole/core/constants.dart';
 import 'package:auto_ecole/firebase_options.dart';
+import 'package:auto_ecole/views/condidat/acceuil.dart';
 import 'package:auto_ecole/views/condidat/home.dart';
 
 import 'package:auto_ecole/views/register.dart';
-import 'package:auto_ecole/views/secretaire/home.dart';
+import 'package:auto_ecole/views/secretaire/condidats.dart';
 import 'package:auto_ecole/views/welcome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,14 +24,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.green),
       title: 'Flutter Demo',
       home: //condition     ?   // si oui(action)   :  // si non (action)
           FirebaseAuth.instance.currentUser != null
               ? FirebaseAuth.instance.currentUser!.uid == AdminId
-                  ?HomeSec()
-                  :Home()
-                 
-              : RegisterScreen(),
+                  ? condidats()
+                  : Home()
+              : Acceuil(),
       debugShowCheckedModeBanner: false,
     );
   }

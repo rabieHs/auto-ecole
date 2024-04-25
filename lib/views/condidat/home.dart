@@ -2,13 +2,14 @@ import 'package:auto_ecole/views/condidat/acceuil.dart';
 import 'package:auto_ecole/views/condidat/cour_condidat.dart';
 import 'package:auto_ecole/views/condidat/panneaux.dart';
 import 'package:auto_ecole/views/condidat/profile.dart';
-import 'package:auto_ecole/views/panneaux.dart';
 import 'package:auto_ecole/test.dart';
+import 'package:auto_ecole/views/secretaire/reservations_condidat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'paiement.dart';
+import 'reservetions_condidat.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -19,11 +20,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List interfaces = const [
-    acceuil(),
     PanneauxCondidat(),
     CoursCondidat(),
     test(),
-    paiement(),
+    MesReservations(),
     profile(),
   ];
   int index = 0;
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                   });
                 },
                 child: Text(
-                  "Acceuil",
+                  "Panneaux",
                   style:
                       TextStyle(color: index == 0 ? Colors.pink : Colors.white),
                 )),
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                   });
                 },
                 child: Text(
-                  "Panneaux",
+                  "Cours",
                   style:
                       TextStyle(color: index == 1 ? Colors.pink : Colors.white),
                 )),
@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                   });
                 },
                 child: Text(
-                  "Cours",
+                  "test",
                   style:
                       TextStyle(color: index == 2 ? Colors.pink : Colors.white),
                 )),
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
                   });
                 },
                 child: Text(
-                  "test",
+                  "Reservations",
                   style:
                       TextStyle(color: index == 3 ? Colors.pink : Colors.white),
                 )),
@@ -87,20 +87,9 @@ class _HomeState extends State<Home> {
                   });
                 },
                 child: Text(
-                  "paiement",
-                  style:
-                      TextStyle(color: index == 4 ? Colors.pink : Colors.white),
-                )),
-            GestureDetector(
-                onTap: () {
-                  setState(() {
-                    index = 5;
-                  });
-                },
-                child: Text(
                   "profile",
                   style:
-                      TextStyle(color: index == 5 ? Colors.pink : Colors.white),
+                      TextStyle(color: index == 4 ? Colors.pink : Colors.white),
                 )),
           ],
         ),

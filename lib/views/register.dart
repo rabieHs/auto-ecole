@@ -225,7 +225,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: 200,
                         child: Center(
                             child: Text(
-                          "Login",
+                          "Register",
                           style: TextStyle(
                               color: primaryColor, fontWeight: FontWeight.bold),
                         ))),
