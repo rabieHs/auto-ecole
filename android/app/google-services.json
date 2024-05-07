@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "563485116497",
+    "project_id": "auto-ecole-4cea4",
+    "storage_bucket": "auto-ecole-4cea4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563485116497:android:0b736ec45a8baa3a969070",
+        "android_client_info": {
+          "package_name": "com.example.auto_ecole"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD3TDCOlXnF3w4pbIx4wzcOPZD0OGhYys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
